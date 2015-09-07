@@ -7,6 +7,11 @@ class House {
   addRoom(room) {
     this.rooms.push(room);
   }
+  removeRoom(room) {
+    let index = this.rooms.indexOf(room);
+    this.rooms.splice(index, 1);
+    return this;
+  }
   area() {
     return this.rooms.reduce((acc, e) => {
       return acc + e.area();
@@ -93,9 +98,7 @@ describe("House", () => {
       let room1 = new Room({ width: 7, length: 8 });
       house1.addRoom(room1);
       house1.removeRoom(room1);
-      expect(house1.length).to.equal(0);
+      expect(house1.rooms.length).to.equal(0);
     });
   });
-
-
 });
