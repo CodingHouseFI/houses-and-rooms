@@ -7,33 +7,30 @@ class House {
   }
   addRoom(room) {
     this.rooms.push(room);
+    return this;
   }
   area() {
     return this.rooms.reduce((acc, e) => {
       return acc + e.area();
     }, 0);
   }
-
 }
-
 
 class Room {
   constructor(options={}) {
     // super(options);
-    let { width, length } = options;
-    if (!width || !length) { throw new Error("Missing params"); }
+    let { width, length, height } = options;
+    if (!width || !length || !height) { throw new Error("Missing params"); }
     this.length = length;
     this.width = width;
+    this.height = height;
   }
 
   area() {
-    return this.length * this.width;
+    return this.length * this.width * this.height;
   }
 }
 
-// ----------
-// Tests
-// ----------
 import { expect } from "chai";
 
 describe("House", () => {
@@ -50,20 +47,21 @@ describe("House", () => {
     expect(house2.name).to.equal("Windmill Dr");
   });
 
-
   describe("Room", () => {
     it("throws an error if I try to define a room without properties", () => {
       expect( () => { new Room }).to.throw("Missing params");
     });
 
-    it("accepts width and length arguments", () => {
-      let room1 = new Room({ width: 7, length: 8 });
-      let room2 = new Room({ width: 5, length: 15 });
+    it("accepts width, length, and height arguments", () => {
+      let room1 = new Room({ width: 7, length: 8, height: 10 });
+      let room2 = new Room({ width: 5, length: 15. height: 10 });
 
       expect(room1.width).to.equal(7);
       expect(room1.length).to.equal(8);
+      expect(room1.height).to.equal(10);
       expect(room2.width).to.equal(5);
       expect(room2.length).to.equal(15);
+      expect(room2.height).to.equal(10);
     });
   });
 
@@ -71,11 +69,11 @@ describe("House", () => {
     let house1, house2;
     beforeEach(() => {
       house1 = new House("Red");
-      house2 = new House("Yello");
+      house2 = new House("Yellow");
 
-      let room1 = new Room({ width: 7, length: 8 });
-      let room2 = new Room({ width: 5, length: 15 });
-      let room3 = new Room({ width: 8, length: 11 });
+      let room1 = new Room({ width: 7, length: 8, height: 10 });
+      let room2 = new Room({ width: 5, length: 15, height: 10 });
+      let room3 = new Room({ width: 8, length: 11, height: 10 });
 
       // associate rooms with a house
       house1.addRoom(room1).addRoom(room2);
@@ -93,6 +91,4 @@ describe("House", () => {
       expect(house2.area()).to.equal(88);
     });
   });
-
-
 });
