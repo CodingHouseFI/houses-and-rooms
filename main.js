@@ -1,25 +1,24 @@
 class House {
-
-  constructor(nameString) {
-    // super(nameString);
+  constructor(nameString) {    
     this.name = nameString;
     this.rooms = [];
   }
+  
   addRoom(room) {
     this.rooms.push(room);
+    return this; 
   }
+  
   area() {
     return this.rooms.reduce((acc, e) => {
       return acc + e.area();
     }, 0);
   }
-
 }
 
 
 class Room {
-  constructor(options={}) {
-    // super(options);
+  constructor(options={}) {   
     let { width, length } = options;
     if (!width || !length) { throw new Error("Missing params"); }
     this.length = length;
@@ -77,13 +76,11 @@ describe("House", () => {
       let room2 = new Room({ width: 5, length: 15 });
       let room3 = new Room({ width: 8, length: 11 });
 
-      // associate rooms with a house
       house1.addRoom(room1).addRoom(room2);
       house2.addRoom(room3);
     });
 
     it("adds one or more rooms to any house", () => {
-      // expect rooms of the house to be something
       expect(house1.rooms.length).to.equal(2);
       expect(house2.rooms.length).to.equal(1);
     });
