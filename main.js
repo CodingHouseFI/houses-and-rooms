@@ -16,12 +16,6 @@ class House {
 
 }
 
-
-
-
-
-
-
 class Room {
   constructor(options={}) {
     // super(options);
@@ -87,6 +81,7 @@ describe("House", () => {
       house2.addRoom(room3);
     });
 
+
     it("adds one or more rooms to any house", () => {
       // expect rooms of the house to be something
       expect(house1.rooms.length).to.equal(2);
@@ -98,6 +93,5 @@ describe("House", () => {
       expect(house2.area()).to.equal(88);
     });
   });
-
 
 });
