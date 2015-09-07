@@ -87,4 +87,15 @@ describe("House", () => {
     });
   });
 
+  describe("Removing rooms from houses", () => {
+    it("removes a single room", () => {
+      let house1 = new House("Red");
+      let room1 = new Room({ width: 7, length: 8 });
+      house1.addRoom(room1);
+      house1.removeRoom(room1);
+      expect(house1.length).to.equal(0);
+    });
+  });
+
+
 });
