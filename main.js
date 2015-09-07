@@ -1,7 +1,4 @@
-console.log('pull request test');
-
 class House {
-
   constructor(nameString) {
     // super(nameString);
     this.name = nameString;
@@ -9,15 +6,14 @@ class House {
   }
   addRoom(room) {
     this.rooms.push(room);
+    return this;
   }
   area() {
     return this.rooms.reduce((acc, e) => {
       return acc + e.area();
     }, 0);
   }
-
 }
-
 
 class Room {
   constructor(options={}) {
@@ -27,7 +23,6 @@ class Room {
     this.length = length;
     this.width = width;
   }
-
   area() {
     return this.length * this.width;
   }
@@ -36,6 +31,7 @@ class Room {
 // ----------
 // Tests
 // ----------
+
 import { expect } from "chai";
 
 describe("House", () => {
@@ -52,12 +48,10 @@ describe("House", () => {
     expect(house2.name).to.equal("Windmill Dr");
   });
 
-
   describe("Room", () => {
     it("throws an error if I try to define a room without properties", () => {
       expect( () => { new Room }).to.throw("Missing params");
     });
-
     it("accepts width and length arguments", () => {
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
@@ -73,7 +67,7 @@ describe("House", () => {
     let house1, house2;
     beforeEach(() => {
       house1 = new House("Red");
-      house2 = new House("Yello");
+      house2 = new House("Yellow");
 
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
@@ -83,18 +77,24 @@ describe("House", () => {
       house1.addRoom(room1).addRoom(room2);
       house2.addRoom(room3);
     });
-
     it("adds one or more rooms to any house", () => {
       // expect rooms of the house to be something
       expect(house1.rooms.length).to.equal(2);
       expect(house2.rooms.length).to.equal(1);
     });
-
     it("allows calculation of house areas", () => {
       expect(house1.area()).to.equal(131)
       expect(house2.area()).to.equal(88);
     });
   });
+  describe("Removing rooms from houses", () => {
+    let house1 = new House("Red");
+    let room1 = new Room({ width: 7, length: 8 });
+    let room2 = new Room({ width: 5, length: 15 });
+    house1.addRoom(room1).addRoom(room2);
 
-
+    it("remove rooms from house", () => {
+      expect(house1.removeRoom(room2).length).to.be.equal(1);
+    });
+  });
 });
