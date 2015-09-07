@@ -86,6 +86,10 @@ describe("House", () => {
       expect(house1.area()).to.equal(131)
       expect(house2.area()).to.equal(88);
     });
+    it('adds a zebra print chair'), () => {
+      expect(house1.room1.chair.print).to.equal('zebra');
+    });
+
   });
 
 });
