@@ -7,6 +7,7 @@ class House {
   }
   addRoom(room) {
     this.rooms.push(room);
+    return this;
   }
   area() {
     return this.rooms.reduce((acc, e) => {
@@ -49,6 +50,10 @@ describe("House", () => {
     let house2 = new House("Windmill Dr");
     expect(house2.name).to.equal("Windmill Dr");
   });
+  it('has at least one room', () =>{
+    let house1 = new House;
+  
+  })
 
 
   describe("Room", () => {
