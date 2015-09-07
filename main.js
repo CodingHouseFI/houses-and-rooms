@@ -1,4 +1,4 @@
-class House {
+class hamsterHouse {
   constructor(nameString) {
     // super(nameString);
     this.name = nameString;
@@ -31,18 +31,18 @@ class Room {
 
 import { expect } from "chai";
 
-describe("House", () => {
-  it("allows user to define a house object", () => {
-    let house1 = new House;
-    expect(house1).to.be.an('object');
+describe("hamsterHouse", () => {
+  it("allows user to define a hamsterHouse object", () => {
+    let hamsterHouse1 = new hamsterHouse;
+    expect(hamsterHouse1).to.be.an('object');
   });
 
-  it("labels every house object with a name", () => {
-    let house1 = new House("Terra Vista");
-    expect(house1.name).to.equal("Terra Vista");
+  it("labels every hamsterHouse object with a name", () => {
+    let hamsterHouse1 = new hamsterHouse("Terra Vista");
+    expect(hamsterHouse1.name).to.equal("Terra Vista");
 
-    let house2 = new House("Windmill Dr");
-    expect(house2.name).to.equal("Windmill Dr");
+    let hamsterHouse2 = new hamsterHouse("Windmill Dr");
+    expect(hamsterHouse2.name).to.equal("Windmill Dr");
   });
 
   describe("Room", () => {
@@ -61,30 +61,30 @@ describe("House", () => {
     });
   });
 
-  describe("Adding rooms to houses", () => {
-    let house1, house2;
+  describe("Adding rooms to hamsterHouses", () => {
+    let hamsterHouse1, hamsterHouse2;
     beforeEach(() => {
-      house1 = new House("Red");
-      house2 = new House("Yellow");
+      hamsterHouse1 = new hamsterHouse("Red");
+      hamsterHouse2 = new hamsterHouse("Yellow");
 
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
       let room3 = new Room({ width: 8, length: 11 });
 
-      // associate rooms with a house
-      house1.addRoom(room1).addRoom(room2);
-      house2.addRoom(room3);
+      // associate rooms with a hamsterHouse
+      hamsterHouse1.addRoom(room1).addRoom(room2);
+      hamsterHouse2.addRoom(room3);
     });
 
-    it("adds one or more rooms to any house", () => {
-      // expect rooms of the house to be something
-      expect(house1.rooms.length).to.equal(2);
-      expect(house2.rooms.length).to.equal(1);
+    it("adds one or more rooms to any hamsterHouse", () => {
+      // expect rooms of the hamsterHouse to be something
+      expect(hamsterHouse1.rooms.length).to.equal(2);
+      expect(hamsterHouse2.rooms.length).to.equal(1);
     });
 
-    it("allows calculation of house areas", () => {
-      expect(house1.area()).to.equal(131)
-      expect(house2.area()).to.equal(88);
+    it("allows calculation of hamsterHouse areas", () => {
+      expect(hamsterHouse1.area()).to.equal(131)
+      expect(hamsterHouse2.area()).to.equal(88);
     });
   });
 
