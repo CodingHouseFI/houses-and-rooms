@@ -30,9 +30,6 @@ class Room {
   }
 }
 
-// ----------
-// Tests
-// ----------
 import { expect } from "chai";
 
 describe("House", () => {
