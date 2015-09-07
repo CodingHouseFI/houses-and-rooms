@@ -6,6 +6,7 @@ class House {
   }
   addRoom(room) {
     this.rooms.push(room);
+    return this;
   }
   area() {
     return this.rooms.reduce((acc, e) => {
