@@ -44,6 +44,10 @@ describe("House", () => {
     let house2 = new House("Windmill Dr");
     expect(house2.name).to.equal("Windmill Dr");
   });
+  it('has at least one room', () =>{
+    let house1 = new House;
+  
+  })
 
   describe("Room", () => {
     it("throws an error if I try to define a room without properties", () => {
