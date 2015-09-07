@@ -76,6 +76,14 @@ describe("House", () => {
       expect(room1.height).to.equal(10);
       expect(room2.height).to.equal(10);
     });
+
+    it("allows calculation room areas", () => {
+      let room1 = new Room({ width: 7, length: 8 }); 
+      let room2 = new Room({ width: 5, length: 15 }); 
+      expect(room1.area()).to.equal(56);
+      expect(room2.area()).to.equal(75);
+
+    });
   });
 
   describe("Adding rooms to houses", () => {
