@@ -1,5 +1,4 @@
 class House {
-
   constructor(nameString) {
     // super(nameString);
     this.name = nameString;
@@ -13,7 +12,6 @@ class House {
       return acc + e.area();
     }, 0);
   }
-
 }
 
 
@@ -25,15 +23,11 @@ class Room {
     this.length = length;
     this.width = width;
   }
-
   area() {
     return this.length * this.width;
   }
 }
 
-// ----------
-// Tests
-// ----------
 import { expect } from "chai";
 
 describe("House", () => {
@@ -49,7 +43,6 @@ describe("House", () => {
     let house2 = new House("Windmill Dr");
     expect(house2.name).to.equal("Windmill Dr");
   });
-
 
   describe("Room", () => {
     it("throws an error if I try to define a room without properties", () => {
@@ -93,6 +86,5 @@ describe("House", () => {
       expect(house2.area()).to.equal(88);
     });
   });
-
 
 });
