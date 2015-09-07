@@ -86,7 +86,9 @@ describe("Coding Mansion", () => {
       expect(house1.area()).to.equal(131)
       expect(house2.area()).to.equal(88);
     });
-    
+     it("allows calculation of flooring cost", () => {
+      expect(house1.hardwood()).to.equal(1000);
+    });
   });
 
 });
