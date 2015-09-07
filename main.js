@@ -8,6 +8,11 @@ class House {
     this.rooms.push(room);
     return this;
   }
+  removeRoom(room) {
+    let index = this.rooms.indexOf(room);
+    this.rooms.splice(index, 1);
+    return this;
+  }
   area() {
     return this.rooms.reduce((acc, e) => {
       return acc + e.area();
@@ -88,4 +93,13 @@ describe("House", () => {
     });
   });
 
+  describe("Removing rooms from houses", () => {
+    it("removes a single room", () => {
+      let house1 = new House("Red");
+      let room1 = new Room({ width: 7, length: 8 });
+      house1.addRoom(room1);
+      house1.removeRoom(room1);
+      expect(house1.rooms.length).to.equal(0);
+    });
+  });
 });
