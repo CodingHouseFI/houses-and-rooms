@@ -1,7 +1,6 @@
 class House {
 
   constructor(nameString) {
-    // super(nameString);
     this.name = nameString;
     this.rooms = [];
   }
@@ -14,9 +13,7 @@ class House {
       return acc + e.area();
     }, 0);
   }
-
 }
-
 
 class Room {
   constructor(options={}) {
@@ -26,15 +23,11 @@ class Room {
     this.length = length;
     this.width = width;
   }
-
   area() {
     return this.length * this.width;
   }
 }
 
-// ----------
-// Tests
-// ----------
 import { expect } from "chai";
 
 describe("House", () => {
@@ -50,7 +43,6 @@ describe("House", () => {
     let house2 = new House("Windmill Dr");
     expect(house2.name).to.equal("Windmill Dr");
   });
-
 
   describe("Room", () => {
     it("throws an error if I try to define a room without properties", () => {
@@ -78,13 +70,11 @@ describe("House", () => {
       let room2 = new Room({ width: 5, length: 15 });
       let room3 = new Room({ width: 8, length: 11 });
 
-      // associate rooms with a house
       house1.addRoom(room1).addRoom(room2);
       house2.addRoom(room3);
     });
 
     it("adds one or more rooms to any house", () => {
-      // expect rooms of the house to be something
       expect(house1.rooms.length).to.equal(2);
       expect(house2.rooms.length).to.equal(1);
     });
@@ -95,5 +85,29 @@ describe("House", () => {
     });
   });
 
+  describe("identifying garages from bathrooms", () => {
+    let house1, house2;
+    beforeEach(() => {
+      house1 = new House("Red");
+      house2 = new House("Yello");
 
+      let room1 = new Room({ width: 7, length: 8 });
+      let room2 = new Room({ width: 5, length: 15 });
+      let room3 = new Room({ width: 8, length: 11 });
+
+      house1.addRoom(room1).addRoom(room2);
+      house2.addRoom(room3);
+
+      expect(house1.rooms.length).to.equal(2);
+      expect(house2.rooms.length).to.equal(1);
+
+      expect(house1.area()).to.equal(131)
+      expect(house2.area()).to.equal(88);
+    });
+    //
+    // it("allows differentiating room sizes for their purposes", () =>{
+    //   expect(house1.room2.area())
+    // })
+
+  });
 });
