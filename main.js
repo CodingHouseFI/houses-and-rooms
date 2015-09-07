@@ -12,16 +12,9 @@ class House {
   }
 
   area() {
-    let area = this.rooms.reduce((acc, e) => {
+    return this.rooms.reduce((acc, e) => {
       return acc + e.area();
     }, 0);
-
-    if (area < 0) {
-      throw new Error("Params outside range");
-    }
-
-    return area;
-
   }
 }
 
@@ -31,6 +24,8 @@ class Room {
     // super(options);
     let { width, length } = options;
     if (!width || !length) { throw new Error("Missing params"); }
+    if (width < 0 || length < 0) { throw new Error("Dimensions outside range"); }
+
     this.length = length;
     this.width = width;
   }
@@ -63,6 +58,13 @@ describe("House", () => {
   describe("Room", () => {
     it("throws an error if I try to define a room without properties", () => {
       expect( () => { new Room }).to.throw("Missing params");
+    });
+
+    it("throws an error if a dimension is negative", () => {
+
+      expect(() => {
+        let room1 = new Room({width: -7, length: 8});
+      }).to.throw("Dimensions outside range");
     });
 
     it("accepts width and length arguments", () => {
@@ -100,14 +102,6 @@ describe("House", () => {
     it("allows calculation of house areas", () => {
       expect(house1.area()).to.equal(131)
       expect(house2.area()).to.equal(88);
-    });
-
-    it("throws an error if dimensions are negative", () => {
-      let house3 = new House("crazy");
-      let room4 = new Room({width: -9, length: 10});
-      house3.addRoom(room4);
-      expect(house3.area() < 0).to.throw("Outside of Range");
-
     });
 
   });
