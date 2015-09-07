@@ -15,7 +15,6 @@ class House {
   }
 }
 
-
 class Room {
   constructor(options={}) {
     // super(options);
@@ -75,6 +74,7 @@ describe("House", () => {
       house1.addRoom(room1).addRoom(room2);
       house2.addRoom(room3);
     });
+
 
     it("adds one or more rooms to any house", () => {
       // expect rooms of the house to be something
