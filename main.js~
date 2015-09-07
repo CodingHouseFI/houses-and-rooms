@@ -6,7 +6,6 @@ class House {
   }
   addRoom(room) {
     this.rooms.push(room);
-    return this;
   }
   area() {
     return this.rooms.reduce((acc, e) => {
@@ -49,10 +48,7 @@ describe("House", () => {
     it("throws an error if I try to define a room without properties", () => {
       expect( () => { new Room }).to.throw("Missing params");
     });
-it("allows user to name the room",()=>{
-		let room1 = new Room({name:"Pinank's Room", width: 8, length: 9 })
-		expect(room1.name).to.equal("Pinank's Room");
-	});
+
     it("accepts width and length arguments", () => {
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
@@ -68,7 +64,7 @@ it("allows user to name the room",()=>{
     let house1, house2;
     beforeEach(() => {
       house1 = new House("Red");
-      house2 = new House("Yellow");
+      house2 = new House("Yello");
 
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
