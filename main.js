@@ -1,4 +1,4 @@
-class House {
+class codingMansion {
   constructor(nameString) {
     // super(nameString);
     this.name = nameString;
@@ -31,17 +31,17 @@ class Room {
 
 import { expect } from "chai";
 
-describe("House", () => {
+describe("Coding Mansion", () => {
   it("allows user to define a house object", () => {
-    let house1 = new House;
+    let house1 = new codingMansion;
     expect(house1).to.be.an('object');
   });
 
   it("labels every house object with a name", () => {
-    let house1 = new House("Terra Vista");
+    let house1 = new codingMansion("Terra Vista");
     expect(house1.name).to.equal("Terra Vista");
 
-    let house2 = new House("Windmill Dr");
+    let house2 = new codingMansion("Windmill Dr");
     expect(house2.name).to.equal("Windmill Dr");
   });
 
@@ -64,8 +64,8 @@ describe("House", () => {
   describe("Adding rooms to houses", () => {
     let house1, house2;
     beforeEach(() => {
-      house1 = new House("Red");
-      house2 = new House("Yello");
+      house1 = new codingMansion("Red");
+      house2 = new codingMansion("Yello");
 
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
@@ -86,6 +86,7 @@ describe("House", () => {
       expect(house1.area()).to.equal(131)
       expect(house2.area()).to.equal(88);
     });
+    
   });
 
 });
