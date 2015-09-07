@@ -5,15 +5,24 @@ class House {
     this.name = nameString;
     this.rooms = [];
   }
+
   addRoom(room) {
     this.rooms.push(room);
-  }
-  area() {
-    return this.rooms.reduce((acc, e) => {
-      return acc + e.area();
-    }, 0);
+    return this;
   }
 
+  area() {
+    let area = this.rooms.reduce((acc, e) => {
+      return acc + e.area();
+    }, 0);
+
+    if (area < 0) {
+      throw new Error("Params outside range");
+    }
+
+    return area;
+
+  }
 }
 
 
@@ -92,6 +101,15 @@ describe("House", () => {
       expect(house1.area()).to.equal(131)
       expect(house2.area()).to.equal(88);
     });
+
+    it("throws an error if dimensions are negative", () => {
+      let house3 = new House("crazy");
+      let room4 = new Room({width: -9, length: 10});
+      house3.addRoom(room4);
+      expect(house3.area() < 0).to.throw("Outside of Range");
+
+    });
+
   });
 
 
