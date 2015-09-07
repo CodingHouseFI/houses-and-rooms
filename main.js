@@ -30,6 +30,17 @@ class Room {
   }
 }
 
+class Neighborhood {
+  constructor(nameString) {
+    this.name = nameString;
+    this.houses = [];
+  }
+
+  addHouse(house) {
+    this.houses.push(house);
+  }
+};
+
 import { expect } from "chai";
 
 describe("House", () => {
@@ -69,6 +80,7 @@ describe("House", () => {
       house1 = new House("Red");
       house2 = new House("Yello");
 
+
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
       let room3 = new Room({ width: 8, length: 11 });
@@ -78,6 +90,22 @@ describe("House", () => {
       house2.addRoom(room3);
     });
 
+    describe("Adding houses to neighborhood", () => {
+      let neighborhood1, neighborhood2;
+      beforeEach(() => {
+        neighborhood1 = new Neighborhood("Sunshine");
+        neighborhood2 = new Neighborhood("Rainbows");
+      });
+
+  //      describe("Neighborhood", () => {
+  // it("allows user to put a house in a neighborhood", () => {
+  //   let neighborhood1 = new Neighborhood;
+  //   expect(neighborhood1).to.be.an('object');
+  // });
+
+
+
+
 
     it("adds one or more rooms to any house", () => {
       // expect rooms of the house to be something
@@ -86,9 +114,10 @@ describe("House", () => {
     });
 
     it("allows calculation of house areas", () => {
-      expect(house1.area()).to.equal(131)
+      expect(house1.area()).to.equal(131);
       expect(house2.area()).to.equal(88);
     });
-  });
 
-});
+
+  // });
+
