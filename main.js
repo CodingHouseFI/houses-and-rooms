@@ -64,6 +64,18 @@ describe("House", () => {
       expect(room2.width).to.equal(5);
       expect(room2.length).to.equal(15);
     });
+
+    it("accepts width, length, and height arguments", () => {
+      let room1 = new Room({ width: 7, length: 8, height: 10 });
+      let room2 = new Room({ width: 5, length: 15, height: 10 });
+
+      expect(room1.width).to.equal(7);
+      expect(room1.length).to.equal(8);
+      expect(room2.width).to.equal(5);
+      expect(room2.length).to.equal(15);
+      expect(room1.height).to.equal(10);
+      expect(room2.height).to.equal(10);
+    });
   });
 
   describe("Adding rooms to houses", () => {
