@@ -65,7 +65,7 @@ describe("House", () => {
     let house1, house2;
     beforeEach(() => {
       house1 = new House("Red");
-      house2 = new House("Yello");
+      house2 = new House("Yellow");
 
       let room1 = new Room({ width: 7, length: 8 });
       let room2 = new Room({ width: 5, length: 15 });
