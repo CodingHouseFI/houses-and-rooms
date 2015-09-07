@@ -93,7 +93,7 @@ describe("House", () => {
       let room1 = new Room({ width: 7, length: 8 });
       house1.addRoom(room1);
       house1.removeRoom(room1);
-      expect(house1.length).to.equal(0);
+      expect(house1.rooms.length).to.equal(0);
     });
   });
 
